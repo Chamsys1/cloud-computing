@@ -12,3 +12,6 @@ data/
 .vscode/
 .idea/
 .DS_Store
+
+# passwoorden en users
+.env
