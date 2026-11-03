@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:18-alpine
+          env:
+            - name: POSTGRES_USER
+              value: storing
+            # TODO week 6: wachtwoord hoort niet in een manifest, dit wordt een Secret
+            - name: POSTGRES_PASSWORD
+              value: clusterdemo
+            - name: POSTGRES_DB
+              value: storingen
+          ports:
+            - containerPort: 5432

@@ -15,5 +15,9 @@ spec:
       containers:
         - name: web
           image: ghcr.io/chamsys1/storingsmelder:1.1
+          env:
+            # TODO week 6: wachtwoord hoort niet in een manifest, dit wordt een Secret
+            - name: DATABASE_URL
+              value: postgresql://storing:clusterdemo@db:5432/storingen
           ports:
             - containerPort: 8000
